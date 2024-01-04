@@ -26,9 +26,12 @@ func (h *Handlers) CreateUser(ctx context.Context, usr *desc.UserData) (*desc.Us
 	newUser, err := h.scenarios.CreateUser(
 		ctx,
 		&models.User{
-			Email: usr.GetEmail(),
-			Name:  usr.GetName(),
-			Age:   usr.GetAge(),
+			Email:      usr.GetEmail(),
+			Name:       usr.GetName(),
+			Age:        usr.GetAge(),
+			University: usr.GetUniversity(),
+			Course:     usr.GetCourse(),
+			Hobbies:    usr.GetHobbies(),
 		},
 	)
 	if err != nil {
