@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"github.com/Egor123qwe/GraphQL-project/internal/config"
-	"github.com/Egor123qwe/GraphQL-project/internal/storage"
 	"github.com/Egor123qwe/GraphQL-project/proto/api/generate/desc"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
@@ -14,14 +13,12 @@ import (
 
 type server struct {
 	service desc.UserServiceServer
-	storage storage.Storage
 	config  *config.Config
 }
 
-func New(service desc.UserServiceServer, config *config.Config, storage storage.Storage) *server {
+func New(service desc.UserServiceServer, config *config.Config) *server {
 	return &server{
 		service: service,
-		storage: storage,
 		config:  config,
 	}
 }

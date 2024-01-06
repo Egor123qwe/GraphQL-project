@@ -8,7 +8,7 @@ type User {
   name:       String
   age:        Int!
   university: String!
-  course:     Int
+  course:     Int!
   hobbies:    [String!]
 }
 

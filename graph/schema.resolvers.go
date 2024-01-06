@@ -6,14 +6,31 @@ package graph
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/Egor123qwe/GraphQL-project/graph/model"
 )
 
 // GetUser is the resolver for the getUser field.
 func (r *queryResolver) GetUser(ctx context.Context, id *string) (*model.User, error) {
-	panic(fmt.Errorf("not implemented: GetUser - getUser"))
+	var Id = ""
+	if id != nil {
+		Id = *id
+	}
+
+	usr, err := r.UserList.GetUser(ctx, Id)
+	if err != nil {
+		return nil, err
+	}
+
+	return &model.User{
+		ID:         usr.Id,
+		Email:      usr.Email,
+		Name:       &usr.Name,
+		Age:        int(usr.Age),
+		University: usr.University,
+		Hobbies:    usr.Hobbies,
+		Course:     int(usr.Course),
+	}, nil
 }
 
 // Query returns QueryResolver implementation.

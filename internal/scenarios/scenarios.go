@@ -15,6 +15,7 @@ var (
 type User interface {
 	CreateUser(ctx context.Context, usr *models.User) (*models.User, error)
 	DeleteUser(ctx context.Context, id string) error
+	GetUser(ctx context.Context, id string) (*models.User, error)
 }
 
 type Scenarios struct {
@@ -37,6 +38,14 @@ func (s *Scenarios) CreateUser(ctx context.Context, usr *models.User) (*models.U
 		return nil, err
 	}
 	return newUser, nil
+}
+
+func (s *Scenarios) GetUser(ctx context.Context, id string) (*models.User, error) {
+	usr, err := s.storage.User().Get(ctx, id)
+	if err != nil {
+		return nil, userNotFoundErr
+	}
+	return usr, err
 }
 
 func (s *Scenarios) DeleteUser(ctx context.Context, id string) error {

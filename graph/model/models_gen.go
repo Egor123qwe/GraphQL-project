@@ -11,6 +11,6 @@ type User struct {
 	Name       *string  `json:"name,omitempty"`
 	Age        int      `json:"age"`
 	University string   `json:"university"`
-	Course     *int     `json:"course,omitempty"`
+	Course     int      `json:"course"`
 	Hobbies    []string `json:"hobbies,omitempty"`
 }
