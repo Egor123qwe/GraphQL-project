@@ -6,7 +6,8 @@ import (
 )
 
 type Config struct {
-	GrpcPort int
+	GrpcPort    int
+	GraphqlPort int
 }
 
 func New() *Config {
@@ -16,6 +17,7 @@ func New() *Config {
 		log.Fatal(err)
 	}
 	return &Config{
-		GrpcPort: viper.GetInt("grpc_server_port"),
+		GrpcPort:    viper.GetInt("grpc_server_port"),
+		GraphqlPort: viper.GetInt("graphql_server_port"),
 	}
 }

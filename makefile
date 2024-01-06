@@ -17,6 +17,9 @@ compile_proto:
 	--grpc-gateway_out=allow_delete_body=true:$(out_grpc_dir) \
 	$(in_grpc_dir)/api.proto
 
+compile_graph:
+	go run github.com/99designs/gqlgen
+
 docker-compose-up:
 	$(DOCKER_COMPOSE) up --build
 

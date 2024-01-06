@@ -15,7 +15,7 @@ func NewConfig() *ConnectionMongo {
 	return &ConnectionMongo{
 		MongoHost:       services.GetEnv("HOST_MONGO", "mongo"),
 		MongoPort:       services.GetEnv("PORT_MONGO", "27017"),
-		MongoDBName:     services.GetEnv("DBNAME_MONGO", "gateway"),
+		MongoDBName:     services.GetEnv("DBNAME_MONGO", "graphQl"),
 		MongoCollection: services.GetEnv("COLLECTION_MONGO", "users"),
 	}
 }
